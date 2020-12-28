@@ -1,0 +1,37 @@
+{
+  "name": "blog-julie-nuxt",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@mdi/font": "^5.8.55",
+    "@nuxtjs/sitemap": "^2.4.0",
+    "@nuxtjs/strapi": "^0.1.8",
+    "axios": "^0.21.0",
+    "core-js": "^3.6.5",
+    "nodemailer": "^6.4.17",
+    "nuxt": "^2.14.6",
+    "validator": "^13.5.2",
+    "xss-filters": "^1.2.7"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^7.1.0",
+    "prettier": "^2.1.2"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
