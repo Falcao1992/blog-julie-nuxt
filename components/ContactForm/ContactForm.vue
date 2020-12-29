@@ -71,6 +71,12 @@
         </v-col>
       </v-col>
     </v-form>
+    <v-snackbar
+      v-model="snackbar"
+      timeout="2000"
+    >
+      salut les gens
+    </v-snackbar>
   </v-col>
 </template>
 
@@ -80,6 +86,7 @@ import axios from "axios"
 export default {
 name: "ContactForm",
   data: () => ({
+    snackbar: false,
     valid: false,
     name: '',
     email: '',
@@ -89,14 +96,11 @@ name: "ContactForm",
   }),
   methods: {
     validate () {
-      console.log("dans validate method")
       if(this.$refs.form.validate()) {
-        console.log("valide form")
-        console.log(this.name.length, "name")
-        console.log(this.msg.length, "msg")
-        console.log(this.phone.length, "phone")
-        console.log(this.objectMsg.length, "objmsg")
         this.submitForm()
+        this.$refs.form.reset()
+        this.name = this.email = this.msg = this.phone = this.objectMsg = ''
+        this.snackbar = true
       } else {
         console.log("pas valide")
       }

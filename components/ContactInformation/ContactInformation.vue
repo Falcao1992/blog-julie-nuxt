@@ -7,7 +7,7 @@
     <v-img
       :src="require('~/assets/images/contactFormImg.png')"
       class="d-flex align-center fill-height"
-      gradient="90deg, rgba(0,0,0,0.80) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.30) 100%"
+      gradient="90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.3) 100%"
     >
       <v-col
         cols="10"
