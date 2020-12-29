@@ -92,6 +92,10 @@ name: "ContactForm",
       console.log("dans validate method")
       if(this.$refs.form.validate()) {
         console.log("valide form")
+        console.log(this.name.length, "name")
+        console.log(this.msg.length, "msg")
+        console.log(this.phone.length, "phone")
+        console.log(this.objectMsg.length, "objmsg")
         this.submitForm()
       } else {
         console.log("pas valide")
@@ -103,7 +107,7 @@ name: "ContactForm",
           name: this.name,
           msg: this.msg,
           email: this.email,
-          objectMsg: this.object,
+          objectMsg: this.objectMsg,
           phone: this.phone,
         })
       } catch (e) {

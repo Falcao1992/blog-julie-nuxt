@@ -24,6 +24,7 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: JSON.stringify({ 'error': 'Method not allowed' }) }
   }
 
+  console.log(JSON.parse(event.body))
   try {
     const params = JSON.parse(event.body)
 
@@ -31,8 +32,9 @@ exports.handler = async (event) => {
     const sanitizedAttributes = attributes.map(n => validateAndSanitize(n, params[n]))
     const someInvalid = sanitizedAttributes.some(r => !r)
 
+    console.log(someInvalid)
     if (someInvalid) {
-      return { statusCode: 422, body: JSON.stringify({ 'error': 'Ugh.. That looks unprocessable!' }) }
+      return { statusCode: 422, body: JSON.stringify({ 'error': 'data not valid!' }) }
     }
     const sendMailFunction = shouldSend ? sendMail : sendMailDev
     try {
@@ -53,8 +55,8 @@ const validateAndSanitize = (key, value) => {
     name: v => v.length < 4,
     email: v => !validator.isEmail(v),
     msg: v => v.length < 25,
-    phone: v => v.length === 10,
-    ObjectMsg: v => v.length > 25
+    phone: v => v.length !== 10,
+    objectMsg: v => v.length > 25
   }
 
   // If object has key and function returns false, return sanitized input. Else, return false
