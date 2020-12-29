@@ -74,7 +74,15 @@
           elevation="0"
           to="/recipes"
         >
-          les recettes
+          Recettes
+        </v-btn>
+      </v-toolbar-items>
+      <v-toolbar-items v-if="$vuetify.breakpoint.smAndUp">
+        <v-btn
+          elevation="0"
+          to="/contact"
+        >
+          Contact
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -98,7 +106,12 @@ export default {
           icon: "mdi-cupcake",
           title: "Recettes",
           to: "/recipes"
-        }
+        },
+        {
+          icon: "mdi-contacts",
+          title: "Contact",
+          to: "/contact"
+        },
       ],
       miniVariant: false
     }

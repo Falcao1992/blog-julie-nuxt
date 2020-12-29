@@ -4,7 +4,27 @@
       v-if="bgImg"
       :bg-img="bgImg"
     />
-    <ContactForm />
+    <v-row
+      class="ma-0"
+      align="center"
+    >
+      <v-col
+        cols="12"
+        class="text-center dark primary--text py-12"
+      >
+        <h2 class="text-h3 py-4">
+          Besoin d'information ?
+        </h2>
+        <p class="py-4">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et excepturi illo labore neque perspiciatis
+          praesentium quam quis sunt voluptates voluptatum!
+        </p>
+      </v-col>
+    </v-row>
+    <v-row class="ma-0">
+      <ContactInformation />
+      <ContactForm />
+    </v-row>
   </div>
 </template>
 
@@ -12,10 +32,12 @@
 import Header from "../../components/Header/Header"
 import getSiteMeta from "../../utils/getSiteMeta"
 import ContactForm from "../../components/ContactForm/ContactForm"
+import ContactInformation from "../../components/ContactInformation/ContactInformation"
 
 export default {
   name: "Contact",
   components: {
+    ContactInformation,
     ContactForm,
     Header
   },
@@ -27,7 +49,6 @@ export default {
       bg_img = BG_IMG_QUERY.image
     } else {
       BG_IMG_QUERY = await $strapi.find("Contenu-pages", {page: route.name})
-      console.log(route.name)
       bg_img = BG_IMG_QUERY[0].bg_img
     }
     return {

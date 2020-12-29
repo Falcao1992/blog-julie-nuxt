@@ -16,7 +16,7 @@ const NODEMAILER_INFO = {
 }
 
 const SMTP_DEFAULT_FIELDS = {
-  from: 'Developmint <no-reply@developmint.de>'
+  from: 'Blog Julie <no-reply@blogJulie.com>'
 }
 
 exports.handler = async (event) => {
@@ -27,7 +27,7 @@ exports.handler = async (event) => {
   try {
     const params = JSON.parse(event.body)
 
-    const attributes = ['name', 'email', 'msg']
+    const attributes = ['name', 'email', 'msg', 'phone', 'objectMsg']
     const sanitizedAttributes = attributes.map(n => validateAndSanitize(n, params[n]))
     const someInvalid = sanitizedAttributes.some(r => !r)
 
@@ -52,14 +52,16 @@ const validateAndSanitize = (key, value) => {
   const rejectFunctions = {
     name: v => v.length < 4,
     email: v => !validator.isEmail(v),
-    msg: v => v.length < 25
+    msg: v => v.length < 25,
+    phone: v => v.length === 10,
+    ObjectMsg: v => v.length > 25
   }
 
   // If object has key and function returns false, return sanitized input. Else, return false
   return rejectFunctions.hasOwnProperty(key) && !rejectFunctions[key](value) && xssFilters.inHTMLData(value)
 }
 
-const sendMail = async (name, email, msg) => {
+const sendMail = async (name, email, msg, phone, objectMsg) => {
   const transporter = nodemailer.createTransport(
     {
       ...NODEMAILER_INFO,
@@ -83,11 +85,13 @@ const sendMail = async (name, email, msg) => {
     html: `
         <h1>Un utilisateur a besoin d'informations</h1>
         <h2>Détail de l'utilisateur: </h2>
+        <h3>${objectMsg}</h3>
         <ul>
           <li>Nom: ${name}</li>
+          <li>Phone: ${phone}</li>
           <li>Email: ${email}</li>
         </ul>
-        <p>^${msg}</p>
+        <p>${msg}</p>
     `
   }
 

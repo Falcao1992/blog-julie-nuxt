@@ -64,6 +64,8 @@ export default {
         return "Les Recettes"
       } else if (this.$route.name === "recipes-id") {
         return ""
+      } else if (this.$route.name === "contact") {
+        return "Contact"
       } else {
         return "Blog de Moumousse"
       }
