@@ -6,7 +6,7 @@
     <v-form
       ref="form"
       v-model="valid"
-      :class="[$vuetify.breakpoint.smAndDown ? 'px-4' : 'px-12']"
+      :class="[$vuetify.breakpoint.smAndDown ? 'px-2' : 'px-12']"
       lazy-validation
     >
       <v-col class="d-flex flex-wrap">
@@ -44,7 +44,7 @@
         <v-col cols="6">
           <v-text-field
             v-model="objectMsg"
-            label="Objet du message"
+            label="Objet du msg"
             counter="25"
             :rules="[v => v.length > 4 || 'Min 4 characters', v => v.length <= 25 || 'Max 25 characters']"
             maxlength="26"
@@ -73,9 +73,14 @@
     </v-form>
     <v-snackbar
       v-model="snackbar"
-      timeout="2000"
+      timeout="6000"
+      top
     >
-      salut les gens
+      <div class="pa-2">
+        <p class="ma-0">
+          Votre message a bien été envoyé ✔️
+        </p>
+      </div>
     </v-snackbar>
   </v-col>
 </template>
@@ -97,10 +102,10 @@ name: "ContactForm",
   methods: {
     validate () {
       if(this.$refs.form.validate()) {
+        this.snackbar = true
         this.submitForm()
         this.$refs.form.reset()
         this.name = this.email = this.msg = this.phone = this.objectMsg = ''
-        this.snackbar = true
       } else {
         console.log("pas valide")
       }
