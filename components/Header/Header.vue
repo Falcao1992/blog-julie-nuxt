@@ -1,29 +1,21 @@
 <template>
-  <header>
+  <header style="position: relative">
     <v-img
       v-if="bgImg"
       :src="bgImg.url"
       :style="[headerStyle]"
+    />
+    <div
+      class="text-center primary--text pa-0"
+      :style="{transform: 'translate(-50%, -50%)',top: '25%',left: '50%',position: 'absolute'}"
     >
-      <v-row
-        align="center"
-        justify="center"
-        style="width: fit-content;margin: auto;"
+      <h1
+        class="text-h2 text-md-h1 font-weight-normal"
+        :style="{opacity: hideWhenLoading, filter:'drop-shadow(3px 10px 2px black)'}"
       >
-        <v-col
-          :style="{ transform: $vuetify.breakpoint.xsOnly ? 'translateY(60%)' : 'translateY(65%)',
-                    top: '0'}"
-          class="text-center primary--text"
-        >
-          <h1
-            :class="[$vuetify.breakpoint.smAndUp && 'mt-4' ,'text-h2 text-md-h1 font-weight-normal pb-4']"
-            :style="{opacity: hideWhenLoading, filter:'drop-shadow(3px 10px 2px black)'}"
-          >
-            {{ generateHeaderTittle }}
-          </h1>
-        </v-col>
-      </v-row>
-    </v-img>
+        {{ generateHeaderTittle }}
+      </h1>
+    </div>
   </header>
 </template>
 
@@ -52,9 +44,10 @@ export default {
         }
       } else {
         styleObject = {
-          height: "100vh",
+          height: `100vh`,
           backgroundPosition: "center",
-          backgroundSize: "cover"
+          backgroundSize: "cover",
+          position: "relative"
         }
       }
       return styleObject

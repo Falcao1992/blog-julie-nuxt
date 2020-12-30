@@ -5,10 +5,8 @@
       :mini-variant="miniVariant"
       app
       class="white"
-      fixed
       overlay-opacity=".4"
       tag="div"
-      temporary
     >
       <v-list>
         <v-list-item
@@ -42,11 +40,12 @@
     </v-navigation-drawer>
     <v-app-bar
       :class="['dark--text', $vuetify.breakpoint.smAndUp && 'pr-8']"
-      absolute
+      fixed
       app
       color="white"
       elevation="20"
       tag="div"
+      hide-on-scroll
     >
       <v-app-bar-nav-icon
         aria-label="Menu de Navigation"
@@ -113,7 +112,7 @@ export default {
           to: "/contact"
         },
       ],
-      miniVariant: false
+      miniVariant: true
     }
   }
 }

@@ -46,6 +46,10 @@ export default {
       {
         name: "Recettes",
         to: "/recipes"
+      },
+      {
+        name: "Contact",
+        to: "/contact"
       }
     ]
   })
