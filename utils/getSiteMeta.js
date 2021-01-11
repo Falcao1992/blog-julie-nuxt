@@ -1,5 +1,5 @@
 const type = "website";
-const url = process.env.API_URL || "http://localhost:1337";
+const url = process.env.WEBSITE_URL || "http://localhost:1337";
 const title = "Blog de Moumousse";
 const description = "des dessert, tartes, gateaux pour vos évènement";
 const mainImage = "/imageMediaDefault.jpg";

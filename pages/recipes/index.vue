@@ -6,6 +6,7 @@
     />
     <RecipesLast :last-recipes="lastRecipes" />
     <RecipesSearch :all-recipes-array="allRecipesArray" />
+    <Quote :quote="quote" />
   </div>
 </template>
 
@@ -13,29 +14,26 @@
 import RecipesSearch from "../../components/RecipesSearch/RecipesSearch"
 import getSiteMeta from "../../utils/getSiteMeta"
 import RecipesLast from "../../components/RecipesLast/RecipesLast"
+import Quote from "../../components/Quote/Quote"
 
 export default {
   name: "Recipes",
   components: {
+    Quote,
     RecipesLast,
     RecipesSearch
   },
   async asyncData({$strapi, route}) {
     const allRecipesArrayQuery = await $strapi.find("Recettes")
 
-    let BG_IMG_QUERY
-    let bg_img
-    if (route.name === "recipes-id") {
-      BG_IMG_QUERY = await $strapi.findOne("Recettes", route.params.id)
-      bg_img = BG_IMG_QUERY.image
-    } else {
-      BG_IMG_QUERY = await $strapi.find("Contenu-pages", {page: route.name})
-      bg_img = BG_IMG_QUERY[0].bg_img
-    }
+    const infoPage = await $strapi.find("Contenu-pages", {page: route.name})
+    const bg_img = infoPage[0].bg_img
+    const quote = infoPage[0].citation
 
     return {
       allRecipesArray: allRecipesArrayQuery,
-      bgImg: bg_img
+      bgImg: bg_img,
+      quote: quote
     }
   },
   data: () => ({
@@ -66,9 +64,9 @@ export default {
       return getSiteMeta(metaData)
     },
     lastRecipes() {
-      let lastRecipes= null
+      let lastRecipes = null
       let nbElToKeep = 4
-      if(this.allRecipesArray) {
+      if (this.allRecipesArray) {
         lastRecipes = JSON.parse(JSON.stringify(this.allRecipesArray))
         lastRecipes.sort(function (a, b) {
           return new Date(b.published_at) - new Date(a.published_at)

@@ -7,6 +7,7 @@
       class="white"
       overlay-opacity=".4"
       tag="div"
+      stateless
     >
       <v-list>
         <v-list-item
@@ -51,13 +52,6 @@
         aria-label="Menu de Navigation"
         class="dark--text" @click.stop="drawer = !drawer"
       />
-      <v-btn
-        v-show="drawer"
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? "right" : "left"}` }}</v-icon>
-      </v-btn>
       <v-spacer v-if="$vuetify.breakpoint.xsOnly" />
       <v-toolbar-title>
         <NuxtLink

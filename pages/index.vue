@@ -8,38 +8,38 @@
       v-for="(article, index) in articles"
       :key="article.id"
       :article="article"
+      :article-class="affectColorsToArticle(index)"
       :article-is-large="article.description.length > 250"
       :article-is-pair="index % 2 === 0"
-      :article-class="affectColorsToArticle(index)"
     />
+    <Quote :quote="quote" />
   </div>
 </template>
 
 <script>
 import Article from "../components/Article/Article"
 import getSiteMeta from "../utils/getSiteMeta"
+import Quote from "../components/Quote/Quote"
 
 export default {
   name: "Home",
   components: {
+    Quote,
     Article
   },
   async asyncData({$strapi, route}) {
-    const matchingArticles = await $strapi.find("Contenu-pages", {
+
+    const infoPage = await $strapi.find("Contenu-pages", {
       page: route.name
     })
-    let BG_IMG_QUERY
-    let bg_img
-    if (route.name === "recipes-id") {
-      BG_IMG_QUERY = await $strapi.findOne("Recettes", route.params.id)
-      bg_img = BG_IMG_QUERY.image
-    } else {
-      BG_IMG_QUERY = await $strapi.find("Contenu-pages", {page: route.name})
-      bg_img = BG_IMG_QUERY[0].bg_img
-    }
+
+    const quote = infoPage[0].citation
+    const bg_img = infoPage[0].bg_img
+
     return {
-      articles: matchingArticles[0].articles,
-      bgImg: bg_img
+      articles: infoPage[0].articles,
+      bgImg: bg_img,
+      quote: quote
     }
   },
   data: () => ({}),
@@ -47,23 +47,23 @@ export default {
     return {
       title: "Accueil",
       meta: [...this.meta]
-    };
+    }
   },
   computed: {
     meta() {
       const metaData = {mainImage: this.bgImg.url}
-      return getSiteMeta(metaData);
+      return getSiteMeta(metaData)
     }
   },
   methods: {
     affectColorsToArticle: function (index) {
-      let white = [1,4,7,10]
-      let dark = [2,5,8,11]
-      if(index % 3 === 0) {
+      let white = [1, 4, 7, 10]
+      let dark = [2, 5, 8, 11]
+      if (index % 3 === 0) {
         return "primary dark--text"
       } else if (white.includes(index)) {
         return "white dark--text"
-      } else if(dark.includes(index)) {
+      } else if (dark.includes(index)) {
         return "dark primary--text"
       } else {
         return "red blue--text"

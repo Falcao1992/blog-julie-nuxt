@@ -5,12 +5,12 @@
       :bg-img="bgImg"
     />
     <v-row
-      class="ma-0"
       align="center"
+      class="ma-0"
     >
       <v-col
-        cols="12"
         class="text-center dark primary--text py-12"
+        cols="12"
       >
         <h2 class="text-h3 py-4">
           Besoin d'information ?
@@ -25,6 +25,7 @@
       <ContactInformation />
       <ContactForm />
     </v-row>
+    <Quote :quote="quote" />
   </div>
 </template>
 
@@ -33,26 +34,25 @@ import Header from "../../components/Header/Header"
 import getSiteMeta from "../../utils/getSiteMeta"
 import ContactForm from "../../components/ContactForm/ContactForm"
 import ContactInformation from "../../components/ContactInformation/ContactInformation"
+import Quote from "../../components/Quote/Quote"
 
 export default {
   name: "Contact",
   components: {
+    Quote,
     ContactInformation,
     ContactForm,
     Header
   },
   async asyncData({$strapi, route}) {
-    let BG_IMG_QUERY
-    let bg_img
-    if (route.name === "recipes-id") {
-      BG_IMG_QUERY = await $strapi.findOne("Recettes", route.params.id)
-      bg_img = BG_IMG_QUERY.image
-    } else {
-      BG_IMG_QUERY = await $strapi.find("Contenu-pages", {page: route.name})
-      bg_img = BG_IMG_QUERY[0].bg_img
-    }
+
+    const infoPage = await $strapi.find("Contenu-pages", {page: route.name})
+    const bg_img = infoPage[0].bg_img
+    const quote = infoPage[0].citation
+
     return {
-      bgImg: bg_img
+      bgImg: bg_img,
+      quote: quote
     }
   },
   data: () => ({

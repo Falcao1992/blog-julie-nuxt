@@ -34,6 +34,7 @@
               :src="recipe.image.url"
               alt=""
               class="fill-height slider--slide--img"
+              max-height="50vh"
             >
               <v-tooltip bottom>
                 <template #activator="{ on, attrs }">

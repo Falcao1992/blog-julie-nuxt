@@ -7,7 +7,7 @@
     />
     <div
       class="text-center primary--text pa-0"
-      :style="{transform: 'translate(-50%, -50%)',top: '25%',left: '50%',position: 'absolute'}"
+      :style="{transform: $vuetify.breakpoint.smAndDown ? 'translate(-50%, 0)' : 'translate(-50%, -50%)' ,top: $vuetify.breakpoint.smAndDown ? '104px' : '25%',left: '50%',position: 'absolute'}"
     >
       <h1
         class="text-h2 text-md-h1 font-weight-normal"
