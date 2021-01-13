@@ -4,6 +4,7 @@
       v-if="bgImg"
       :src="bgImg.url"
       :style="[headerStyle]"
+      gradient="180deg, rgba(5,5,5,0.8) 0%, rgba(0,0,0,0.1) 100%"
     />
     <div
       class="text-center primary--text pa-0"

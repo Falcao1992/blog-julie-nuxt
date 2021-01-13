@@ -16,8 +16,7 @@
           Besoin d'information ?
         </h2>
         <p class="py-4">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et excepturi illo labore neque perspiciatis
-          praesentium quam quis sunt voluptates voluptatum!
+          Pour toute demande d'informations, Veuillez remplir le formulaire ci-dessous, je vous répondrais dans les plus bref délais.
         </p>
       </v-col>
     </v-row>

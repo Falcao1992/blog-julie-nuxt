@@ -6,8 +6,8 @@
       app
       class="white"
       overlay-opacity=".4"
-      tag="div"
       stateless
+      tag="div"
     >
       <v-list>
         <v-list-item
@@ -41,12 +41,12 @@
     </v-navigation-drawer>
     <v-app-bar
       :class="['dark--text', $vuetify.breakpoint.smAndUp && 'pr-8']"
-      fixed
       app
       color="white"
       elevation="20"
-      tag="div"
+      fixed
       hide-on-scroll
+      tag="div"
     >
       <v-app-bar-nav-icon
         aria-label="Menu de Navigation"
@@ -62,7 +62,10 @@
         </NuxtLink>
       </v-toolbar-title>
       <v-spacer v-if="$vuetify.breakpoint.smAndUp" />
-      <v-toolbar-items v-if="$vuetify.breakpoint.smAndUp">
+      <v-toolbar-items
+        v-if="$vuetify.breakpoint.smAndUp"
+        class="ml-4"
+      >
         <v-btn
           elevation="0"
           to="/recipes"
@@ -70,7 +73,10 @@
           Recettes
         </v-btn>
       </v-toolbar-items>
-      <v-toolbar-items v-if="$vuetify.breakpoint.smAndUp">
+      <v-toolbar-items
+        v-if="$vuetify.breakpoint.smAndUp"
+        class="ml-4"
+      >
         <v-btn
           elevation="0"
           to="/contact"
@@ -104,7 +110,7 @@ export default {
           icon: "mdi-contacts",
           title: "Contact",
           to: "/contact"
-        },
+        }
       ],
       miniVariant: true
     }

@@ -18,11 +18,11 @@
           class="py-2 contact-information__title"
           style="position: relative; width: max-content"
         >
-          Julie Company
+          Moumousse Company
         </h3>
         <p>Bourges, 18000</p>
         <p class="gold--text">
-          julie.test@gmail.com
+          Moumousse.recettes@gmail.com
         </p>
       </v-col>
     </v-img>

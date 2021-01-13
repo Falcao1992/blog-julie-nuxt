@@ -12,8 +12,7 @@
           Chercher une recettes
         </h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et excepturi illo labore neque perspiciatis
-          praesentium quam quis sunt voluptates voluptatum!
+          Rechercher par le nom de la recette ou par les ingredients le dessert que vous souhaitez découvrir.
         </p>
       </v-col>
     </v-row>

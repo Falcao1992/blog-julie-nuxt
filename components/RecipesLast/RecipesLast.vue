@@ -1,19 +1,22 @@
 <template>
-  <v-row class="primaryDarken py-8 ma-0">
+  <v-row class="primary py-8 ma-0">
     <v-col
       cols="10"
       class="mx-auto"
     >
-      <h2 class="text-center text-h3 white--text">
+      <h2 class="text-center text-h3 dark--text mb-8">
         Dernières recettes
       </h2>
+      <p class="text-center">
+        Laissez vous tentez pas une selection de nos dernières recettes.
+      </p>
     </v-col>
     <v-col
       :cols="$vuetify.breakpoint.xsOnly ? 12 : 10"
       class="d-flex flex-wrap mx-auto"
     >
       <v-col
-        v-for="recipe in LastRecipes"
+        v-for="recipe in lastRecipes"
         :key="recipe.id"
         :cols="$vuetify.breakpoint.xsOnly ? 12 : $vuetify.breakpoint.smOnly ? 6 : 3"
         class="pa-4"
@@ -40,7 +43,7 @@
 export default {
 name: "RecipesLast",
   props: {
-    LastRecipes: {
+    lastRecipes: {
       type: Array,
       default: () => [],
       require: true
