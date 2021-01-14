@@ -57,7 +57,7 @@ export default {
       const metaData = {
         type: "recettes",
         title: "Les Recettes",
-        description: "un large choix de recettes",
+        description: "Ici vous pourrez trouvez la recette du dessert que vous désirez parmi un large de choix de tartes, gateaux, goûter etc ...",
         url: `${this.BASE_URL}/recipes`,
         mainImage: this.bgImg.url
       }

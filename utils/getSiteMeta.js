@@ -1,7 +1,7 @@
 const type = "website";
 const url = process.env.WEBSITE_URL || "http://localhost:1337";
 const title = "Blog de Moumousse";
-const description = "des dessert, tartes, gateaux pour vos évènement";
+const description = "Bienvenue sur mon Blog spécialisé sur les desserts où je vous présente les recettes que je peut réaliser pour vos évènements.";
 const mainImage = "/imageMediaDefault.jpg";
 
 export default (meta) => {

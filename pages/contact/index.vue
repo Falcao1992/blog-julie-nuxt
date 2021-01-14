@@ -62,7 +62,7 @@ export default {
       const metaData = {
         type: "website",
         title: "Contact",
-        description: "Contactez nous pour tout informations",
+        description: "Besoin d'une information sur un dessert, n'hésitez pas à me contacter en remplissant le formulaire de contact.",
         url: `${this.BASE_URL}/contact`,
         mainImage: this.bgImg.url
       }
