@@ -6,7 +6,7 @@
     <v-form
       ref="form"
       v-model="valid"
-      :class="[$vuetify.breakpoint.smAndDown ? 'px-2' : 'px-12']"
+      :class="[$vuetify.breakpoint.smAndDown ? 'px-2' : 'px-12 py-8']"
       lazy-validation
     >
       <v-col class="d-flex flex-wrap">
